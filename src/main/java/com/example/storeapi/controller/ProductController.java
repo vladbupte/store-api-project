@@ -1,0 +1,56 @@
+package com.example.storeapi.controller;
+
+import com.example.storeapi.dto.ProductRequest;
+import com.example.storeapi.entity.Product;
+import com.example.storeapi.service.ProductService;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/products")
+public class ProductController {
+
+    private final ProductService service;
+
+    public ProductController(ProductService service) {
+        this.service = service;
+    }
+
+    // Health endpoint for browser quick check
+    @GetMapping("/health")
+    public String ok() {
+        return "API running";
+    }
+
+    // CRUD
+    @GetMapping
+    public List<Product> getAll() {
+        return service.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public Product getOne(@PathVariable Long id) {
+        return service.getById(id);
+    }
+
+    @PostMapping
+    public ResponseEntity<Product> create(@Valid @RequestBody ProductRequest req) {
+        Product created = service.create(req);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+    }
+
+    @PutMapping("/{id}")
+    public Product update(@PathVariable Long id, @Valid @RequestBody ProductRequest req) {
+        return service.update(id, req);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
+    }
+}

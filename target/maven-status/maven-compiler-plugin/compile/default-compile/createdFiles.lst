@@ -1,0 +1,8 @@
+com\example\storeapi\StoreApiApplication.class
+com\example\storeapi\config\DataInitializer.class
+com\example\storeapi\dto\ProductRequest.class
+com\example\storeapi\entity\Product.class
+com\example\storeapi\exception\ApiExceptionHandler.class
+com\example\storeapi\repository\ProductRepository.class
+com\example\storeapi\service\ProductService.class
+com\example\storeapi\controller\ProductController.class
