@@ -1,0 +1,14 @@
+Proiect individual – RESTful Store API
+
+Proiectul este o aplicație backend realizată în Java folosind Spring Boot.
+Aplicația expune un API REST pentru gestionarea produselor dintr-un magazin.
+
+Funcționalități:
+- adăugare produs
+- vizualizare toate produsele
+- vizualizare produs după ID
+- modificare produs
+- ștergere produs
+
+Datele sunt stocate într-o bază de date H2.
+Testarea endpoint-urilor se face folosind Postman.
